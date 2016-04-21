@@ -1,4 +1,4 @@
-FROM phusion/passenger-customizable:0.9.17
+FROM phusion/passenger-customizable:0.9.18
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
@@ -21,6 +21,6 @@ RUN apt-mark hold initscripts \
     && curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - \
     && DEBIAN_FRONTEND=noninteractive /pd_build/nodejs.sh \
     && DEBIAN_FRONTEND=noninteractive /pd_build/python.sh \
-    && DEBIAN_FRONTEND=noninteractive apt-get -qq -y install ffmpeg nginx findutils \
+    && DEBIAN_FRONTEND=noninteractive apt-get -qq -y install ffmpeg nginx findutils libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++ \
     && DEBIAN_FRONTEND=noninteractive apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
